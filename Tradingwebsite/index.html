@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakesh Bhai Prediction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .main-title {
+            background: linear-gradient(45deg, #00ff88, #00aaff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 15px 30px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+
+        /* Telegram Section */
+        .telegram-section {
+            background: linear-gradient(45deg, #0088cc, #00aa55);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .telegram-section h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .telegram-section p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .telegram-btn {
+            background: white;
+            color: #0088cc;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .telegram-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Apps Grid */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .app-icon:hover {
+            transform: scale(1.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* App Icons */
+        .A1Lottery { 
+            background-image: url('Assets/Logo/a1lottery.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .Lottery { 
+            background-image: url('Assets/Logo/82Lottery.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .Raja { 
+            background-image: url('Assets/Logo/raja.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .tiranga { 
+            background-image: url('Assets/Logo/tiranga.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .Club { 
+            background-image: url('Assets/Logo/91club.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .Goa { 
+            background-image: url('Assets/Logo/goagame.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .Daman { 
+            background-image: url('Assets/Logo/daman.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .Club51 { 
+            background-image: url('Assets/Logo/51\ club.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .BDG { 
+            background-image: url('Assets/Logo/bdggame.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .Tashan { 
+            background-image: url('Assets/Logo/tashan.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .Diu { 
+            background-image: url('Assets/Logo/diuwin.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .Dmwin { 
+            background-image: url('Assets/Logo/dmwin.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Support Button */
+        .support-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #00ff88, #00aaff);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .support-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .privacy-policy {
+            font-size: 12px;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        /* Modal - Fixed for scrolling and QR size */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            overflow-y: auto; /* Enable vertical scrolling */
+            padding: 20px 0; /* Add padding for better spacing */
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 350px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-height: calc(100vh - 40px); /* Ensure modal doesn't exceed viewport */
+            overflow-y: auto; /* Enable scrolling within modal */
+        }
+
+        .modal-header {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .modal-description {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .modal-body {
+            padding: 20px; /* Reduced padding for better spacing */
+            text-align: center;
+        }
+
+        .link-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .link-section h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #00ff88;
+        }
+
+        .app-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #00ff88, #00aaff);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .app-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .price-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .price-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ff88;
+            margin-bottom: 5px;
+        }
+
+        .validity-text {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .qr-section {
+            background: white;
+            padding: 15px; /* Reduced padding */
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .qr-placeholder {
+            width: 150px; /* Reduced size from 200px */
+            height: 150px; /* Reduced size from 200px */
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+            overflow: hidden; /* Prevent image overflow */
+        }
+
+        .qr-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Maintain aspect ratio */
+        }
+
+        .close-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 10px; /* Add margin for better spacing */
+        }
+
+        .close-btn:hover {
+            background: #ff3838;
+            transform: scale(1.05);
+        }
+
+        .close-x {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .close-x:hover {
+            color: white;
+            transform: scale(1.2);
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .apps-grid {
+                gap: 15px;
+                padding: 15px;
+            }
+            
+            .app-icon {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .modal {
+                padding: 10px 0;
+            }
+            
+            .modal-content {
+                width: 95%;
+                max-height: calc(100vh - 20px);
+            }
+            
+            .modal-body {
+                padding: 15px;
+            }
+            
+            .qr-placeholder {
+                width: 120px; /* Even smaller on mobile */
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="main-title">Rakesh Bhai Prediction</h1>
+        </div>
+
+        <!-- Telegram Section -->
+        <div class="telegram-section">
+            <h3>📢 Join Our Telegram Channel</h3>
+            <p>Get instant updates, tips, and exclusive content. Stay connected with our community!</p>
+            <button class="telegram-btn" onclick="window.open('https://t.me/jai_shree_ram_7', '_blank')">
+                Join Now
+            </button>
+        </div>
+
+        <!-- Apps Grid -->
+        <div class="apps-grid">
+            <div class="app-icon A1Lottery" onclick="openModal('A1 Lottery', 'Assets/Logo/a1lottery.jpg', 'A1Lottery')" title="A1 Lottery"></div>
+            <div class="app-icon Lottery" onclick="openModal('Lottery', 'Assets/Logo/82Lottery.jpeg', 'Lottery')" title="82 Lottery"></div>
+            <div class="app-icon Raja" onclick="openModal('Raja', 'Assets/Logo/raja.jpeg', 'Raja')" title="Raja Game"></div>
+            <div class="app-icon tiranga" onclick="openModal('Tiranga Games', 'Assets/Logo/tiranga.png', 'tiranga')" title="Tiranga Games"></div>
+            <div class="app-icon Club" onclick="openModal('Club', 'Assets/Logo/91club.jpeg', 'Club')" title="91 Club"></div>
+            <div class="app-icon Goa" onclick="openModal('Goa', 'Assets/Logo/goagame.jpeg', 'Goa')" title="Goa Games"></div>
+            <div class="app-icon Daman" onclick="openModal('Daman', 'Assets/Logo/daman.jpeg', 'Daman')" title="Daman"></div>
+            <div class="app-icon Club51" onclick="openModal('Club51', 'Assets/Logo/51\ club.png', 'Club51')" title="51 Club"></div>
+            <div class="app-icon BDG" onclick="openModal('BDG', 'Assets/Logo/bdggame.jpeg', 'BDG')" title="BDG Win"></div>
+            <div class="app-icon Tashan" onclick="openModal('Tashan', 'Assets/Logo/tashan.jpeg', 'Tashan')" title="Tashan Win"></div>
+            <div class="app-icon Diu" onclick="openModal('Diu', 'Assets/Logo/diuwin.jpeg', 'Diu')" title="Diu Win"></div>
+            <div class="app-icon Dmwin" onclick="openModal('Dmwin', 'Assets/Logo/dmwin.jpeg', 'Dmwin')" title="Dm Win"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="social-icons">
+                <div class="social-icon" onclick="window.open('https://t.me/jai_shree_ram_7', '_blank')" title="Telegram">📱</div>
+                <div class="social-icon" onclick="window.open('https://www.instagram.com/tredewithhack?igsh=MTNhcDUzbXppdXZkZg==')" title="Instagram">📷</div>
+                <div class="social-icon" onclick="location.href='mailto:officialcolourtrading123@gmail.com'" title="Mail">📧</div>
+            </div>
+            <div class="privacy-policy">
+                <strong>Privacy Policy:</strong> We respect your privacy and protect your personal information. 
+                All data is encrypted and securely stored. We do not share your information with third parties. 
+                For any concerns, contact our support team.
+            </div>
+        </div>
+    </div>
+
+    <!-- Support Button -->
+    <button class="support-btn" onclick="location.href='mailto:officialcolourtrading123@gmail.com'" title="Contact Support">
+        📧
+    </button>
+
+    <!-- Modal -->
+    <div id="hackModal" class="modal">
+        <div class="modal-content">
+            <span class="close-x" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <div class="modal-logo" id="modalLogo"></div>
+                <h2 class="modal-title" id="modalTitle">App Name</h2>
+                <p class="modal-description">
+                    Get exclusive access to premium features and increase your winning chances. 
+                    Our advanced algorithms and real-time data analysis will help you make 90% correct predictions.
+                </p>
+            </div>
+            <div class="modal-body">
+                <div class="link-section">
+                    <h3>🔗 Official Links</h3>
+                    <a href="#" class="app-link" id="downloadLink">Referal Link</a>
+                    <a href="mailto:officialcolourtrading123@gmail.com" class="app-link" id="officialLink">Contact Support</a>
+                    <button class="telegram-btn" onclick="window.open('https://t.me/jai_shree_ram_7', '_blank')">
+                Share Screenshot after Payment
+            </button>
+                </div>
+                <div class="price-section">
+                    <div class="price-text">₹649</div>
+                    <div class="validity-text">Valid for 28 Days</div>
+                    <div class="validity-text">Pay on following QR</div>
+                </div>
+                <div class="qr-section">
+                    <div class="qr-placeholder">
+                        <img src="Assets/Other/QRcode.jpg" alt="QR Code">
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Referral links for each game
+        const referralLinks = {
+            'A1Lottery': 'https://www.1lotterygg.com/#/register?invitationCode=7873810414607',
+            'Lottery': 'https://www.82lottery4.in/#/register?invitationCode=63621307024',
+            'Raja': 'https://www.rajagames0.com/#/register?invitationCode=78254302174',
+            'tiranga': 'https://tirangagame.top/#/register?invitationCode=55151774737',
+            'Club': 'https://www.91appi.com/#/register?invitationCode=412723622123',
+            'Goa': 'http://www.goabete.com/#/register?invitationCode=562461267183',
+            'Daman': 'https://damansuperstar.com/#/register?invitationCode=256176848874',
+            'Club51': 'https://51game.game/#/register?invitationCode=21558132433',
+            'BDG': 'https://www.bdg-top.in/#/register?invitationCode=518132893426',
+            'Tashan': 'https://www.tashanwin.org/#/register?invitationCode=452881588623',
+            'Diu': 'https://www.diuwin8.com/#/register?invitationCode=62867139162',
+            'Dmwin': 'https://www.dmwin4.com/#/register?invitationCode=364732683570',
+        };
+
+        // Modal functionality
+        function openModal(appName, logoPath, gameId) {
+            document.getElementById('modalTitle').textContent = appName;
+            document.getElementById('modalLogo').style.backgroundImage = `url('${logoPath}')`;
+            
+            // Update referral link
+            const downloadLink = document.getElementById('downloadLink');
+            downloadLink.href = referralLinks[gameId] || '#';
+            
+            document.getElementById('hackModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('hackModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('hackModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Smooth scrolling for better mobile experience
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
+</body>
+</html>
